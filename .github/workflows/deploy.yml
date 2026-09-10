@@ -13,14 +13,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Test Server Connection
+      - name: Create Destination Directory & Copy Image
         run: |
-          echo "Successfully connected to self-hosted runner!"
-          echo "Current user: $(whoami)"
-          echo "Server hostname: $(hostname)"
-          echo "Working directory: $(pwd)"
+          # 1. Create subfolder inside /home/ubuntu if it doesn't exist
+          mkdir -p /home/ubuntu/my-images
 
-      - name: List Repository Files
-        run: |
-          echo "Files in repository:"
-          ls -la
+          # 2. Copy the image file from repo into destination directory
+          cp path/to/your/image.png /home/ubuntu/my-images/
+
+          # 3. Verify the file exists
+          ls -la /home/ubuntu/my-images/
